@@ -7,7 +7,7 @@
 //
 
 import Foundation
-struct ImageViewController {
+struct ImageViewController: ViewController {
     
     enum State {
         case empty, filled 

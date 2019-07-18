@@ -13,7 +13,7 @@
 		E906ACAD22CCFB1F0085A3F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E906ACAC22CCFB1F0085A3F8 /* Assets.xcassets */; };
 		E906ACB022CCFB1F0085A3F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E906ACAE22CCFB1F0085A3F8 /* LaunchScreen.storyboard */; };
 		E906ACBC22CCFCD90085A3F8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E906ACBB22CCFCD90085A3F8 /* Default-568h@2x.png */; };
-		E906ACBE22CE04930085A3F8 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E906ACBD22CE04930085A3F8 /* ImageViewController.swift */; };
+		E9C5168422DF93D200820529 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C5168322DF93D200820529 /* Main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		E906ACAF22CCFB1F0085A3F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E906ACB122CCFB1F0085A3F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E906ACBB22CCFCD90085A3F8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		E906ACBD22CE04930085A3F8 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		E9C5168322DF93D200820529 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +59,10 @@
 		E906ACA422CCFB1A0085A3F8 /* Instagrid */ = {
 			isa = PBXGroup;
 			children = (
-				E906ACBA22CCFCA10085A3F8 /* SupportingFiles */,
 				E906ACB922CCFC900085A3F8 /* Model */,
 				E906ACB822CCFC820085A3F8 /* View */,
 				E906ACB722CCFC770085A3F8 /* Controller */,
+				E906ACBA22CCFCA10085A3F8 /* SupportingFiles */,
 			);
 			path = Instagrid;
 			sourceTree = "<group>";
@@ -71,7 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				E906ACA722CCFB1A0085A3F8 /* ViewController.swift */,
-				E906ACBD22CE04930085A3F8 /* ImageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -87,6 +86,7 @@
 		E906ACB922CCFC900085A3F8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E9C5168322DF93D200820529 /* Main.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -175,7 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E906ACA822CCFB1A0085A3F8 /* ViewController.swift in Sources */,
-				E906ACBE22CE04930085A3F8 /* ImageViewController.swift in Sources */,
+				E9C5168422DF93D200820529 /* Main.swift in Sources */,
 				E906ACA622CCFB1A0085A3F8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
