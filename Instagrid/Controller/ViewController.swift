@@ -12,25 +12,26 @@ class ViewController: UIViewController {
     
     //MARK: - IBAction
     
-    @IBAction func firstViewDisposition(_ sender: Any) {
+    @IBAction func firstViewDisposition(_ sender: UIButton) {
+        style = .used
         doFirstDisposition()
-        
     }
-    @IBAction func secondViewDisposition(_ sender: Any) {
+    @IBAction func secondViewDisposition(_ sender: UIButton) {
+        style = .used
         doSecondDisposition()
     }
-    @IBAction func thirdViewDisposition(_ sender: Any) {
+    @IBAction func thirdViewDisposition(_ sender: UIButton) {
+        style = .used
         doThirdDisposition()
     }
     
     //MARK: - IBOutlet
     
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet var firstAndSecondImage: [UIImageView]!
     @IBOutlet var thirdAndFourthImage: [UIImageView]!
-    
-    
+    @IBOutlet var buttonDisposition: [UIButton]!
+
     let main = Main()
 
     override func viewDidLoad() {
@@ -41,7 +42,6 @@ class ViewController: UIViewController {
     //MARK: - Func
     
     func giveNameToLabel() {
-        titleLabel.text = "Instagrid"
         instructionLabel.text = """
                 Swipe up to share ^
         """
@@ -49,9 +49,20 @@ class ViewController: UIViewController {
     
     //MARK: - Image Disposition
     
-    enum State {
-        case used, unused, neutral
+    enum Style {
+        case used, unused
     }
+    
+    var style: Style = .unused
+    
+//    func setStyle(_ style: Style) {
+//        switch style {
+//
+//        case .used:
+//        case .unused:
+//
+//        }
+//    }
     
     private func doFirstDisposition() {
         firstAndSecondImage[0].isHidden = false
