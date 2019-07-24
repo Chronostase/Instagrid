@@ -12,6 +12,16 @@ class ViewController: UIViewController {
     
     //MARK: - IBAction
     
+    //FIX: add Image control func
+    @IBAction func firstImageButton(_ sender: UIButton) {
+    }
+    @IBAction func secondImageButton(_ sender: UIButton) {
+    }
+    @IBAction func thirdImageButton(_ sender: UIButton) {
+    }
+    @IBAction func fourthImageButton(_ sender: UIButton) {
+    }
+    
     @IBAction func firstViewDisposition(_ sender: UIButton) {
         style = .used
         doFirstDisposition()
@@ -28,8 +38,8 @@ class ViewController: UIViewController {
     //MARK: - IBOutlet
     
     @IBOutlet weak var instructionLabel: UILabel!
-    @IBOutlet var firstAndSecondImage: [UIImageView]!
-    @IBOutlet var thirdAndFourthImage: [UIImageView]!
+    @IBOutlet var firstAndSecondButton: [UIButton]!
+    @IBOutlet var thirdAndFourthButton: [UIButton]!
     @IBOutlet var buttonDisposition: [UIButton]!
 
     let main = Main()
@@ -65,27 +75,27 @@ class ViewController: UIViewController {
 //    }
     
     private func doFirstDisposition() {
-        firstAndSecondImage[0].isHidden = false
-        firstAndSecondImage[1].isHidden = true
+        firstAndSecondButton[0].isHidden = false
+        firstAndSecondButton[1].isHidden = true
         
-        for image in thirdAndFourthImage {
+        for image in thirdAndFourthButton {
             image.isHidden = false
         }
     }
     
     private func doSecondDisposition() {
-        for image in firstAndSecondImage {
+        for image in firstAndSecondButton {
             image.isHidden = false
         }
-        thirdAndFourthImage[0].isHidden = false
-        thirdAndFourthImage[1].isHidden = true
+        thirdAndFourthButton[0].isHidden = false
+        thirdAndFourthButton[1].isHidden = true
     }
     
     private func doThirdDisposition() {
-        for image in firstAndSecondImage {
+        for image in firstAndSecondButton {
             image.isHidden = false
         }
-        for image in thirdAndFourthImage {
+        for image in thirdAndFourthButton {
             image.isHidden = false
         }
     }

@@ -25,27 +25,44 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ES8-jk-7KA">
                                         <rect key="frame" x="16.5" y="14" width="298" height="142.5"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Plus" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bxC-ff-ow8">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7OV-Ze-Ncy">
                                                 <rect key="frame" x="0.0" y="0.0" width="139" height="142.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Plus" translatesAutoresizingMaskIntoConstraints="NO" id="gsn-4r-qxS">
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <state key="normal" image="Plus"/>
+                                                <connections>
+                                                    <action selector="firstImageButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oUo-M9-rfG"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCC-hF-THV">
                                                 <rect key="frame" x="159" y="0.0" width="139" height="142.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </imageView>
+                                                <state key="normal" image="Plus"/>
+                                                <connections>
+                                                    <action selector="secondImageButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x4Z-OU-AZd"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cFc-3j-z1s">
                                         <rect key="frame" x="16.5" y="174.5" width="298" height="142.5"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Plus" translatesAutoresizingMaskIntoConstraints="NO" id="1mN-cr-XE3">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVb-g5-dyh">
                                                 <rect key="frame" x="0.0" y="0.0" width="139" height="142.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Plus" translatesAutoresizingMaskIntoConstraints="NO" id="21d-QF-qjX">
+                                                <state key="normal" image="Plus"/>
+                                                <connections>
+                                                    <action selector="thirdImageButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YFz-G7-P2N"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IT6-vC-nsV">
                                                 <rect key="frame" x="159" y="0.0" width="139" height="142.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </imageView>
+                                                <state key="normal" image="Plus"/>
+                                                <connections>
+                                                    <action selector="fourthImageButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EZS-Yf-rO9"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -213,13 +230,13 @@
                     </view>
                     <connections>
                         <outlet property="instructionLabel" destination="iCX-uB-XAm" id="Og8-Mh-DBg"/>
-                        <outletCollection property="firstAndSecondImage" destination="bxC-ff-ow8" collectionClass="NSMutableArray" id="0i5-JU-0Ey"/>
-                        <outletCollection property="firstAndSecondImage" destination="gsn-4r-qxS" collectionClass="NSMutableArray" id="IK3-Pv-AK5"/>
-                        <outletCollection property="thirdAndFourthImage" destination="1mN-cr-XE3" collectionClass="NSMutableArray" id="cH7-rP-HRJ"/>
-                        <outletCollection property="thirdAndFourthImage" destination="21d-QF-qjX" collectionClass="NSMutableArray" id="osn-zx-ssS"/>
                         <outletCollection property="buttonDisposition" destination="UaI-gd-D9j" collectionClass="NSMutableArray" id="HdE-D9-BQ8"/>
                         <outletCollection property="buttonDisposition" destination="9fw-Jn-ihd" collectionClass="NSMutableArray" id="txb-sQ-ShS"/>
                         <outletCollection property="buttonDisposition" destination="yW8-or-TqR" collectionClass="NSMutableArray" id="gXc-oH-S3c"/>
+                        <outletCollection property="firstAndSecondButton" destination="7OV-Ze-Ncy" collectionClass="NSMutableArray" id="oyT-14-nEo"/>
+                        <outletCollection property="firstAndSecondButton" destination="hCC-hF-THV" collectionClass="NSMutableArray" id="m6c-rF-Hq6"/>
+                        <outletCollection property="thirdAndFourthButton" destination="cVb-g5-dyh" collectionClass="NSMutableArray" id="TqY-kT-Vj3"/>
+                        <outletCollection property="thirdAndFourthButton" destination="IT6-vC-nsV" collectionClass="NSMutableArray" id="6VT-1e-YLA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
