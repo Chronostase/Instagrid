@@ -25,21 +25,21 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ES8-jk-7KA">
                                         <rect key="frame" x="16.5" y="14" width="298" height="142.5"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7OV-Ze-Ncy">
+                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7OV-Ze-Ncy">
                                                 <rect key="frame" x="0.0" y="0.0" width="139" height="142.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" image="Plus"/>
                                                 <connections>
-                                                    <action selector="firstImageButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oUo-M9-rfG"/>
+                                                    <action selector="didTapImagesButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lYS-hI-irO"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCC-hF-THV">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCC-hF-THV">
                                                 <rect key="frame" x="159" y="0.0" width="139" height="142.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="Plus"/>
                                                 <connections>
-                                                    <action selector="secondImageButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x4Z-OU-AZd"/>
+                                                    <action selector="didTapImagesButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4de-fG-sBz"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -47,20 +47,20 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cFc-3j-z1s">
                                         <rect key="frame" x="16.5" y="174.5" width="298" height="142.5"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVb-g5-dyh">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVb-g5-dyh">
                                                 <rect key="frame" x="0.0" y="0.0" width="139" height="142.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="Plus"/>
                                                 <connections>
-                                                    <action selector="thirdImageButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YFz-G7-P2N"/>
+                                                    <action selector="didTapImagesButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cnr-zo-ln8"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IT6-vC-nsV">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IT6-vC-nsV">
                                                 <rect key="frame" x="159" y="0.0" width="139" height="142.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="Plus"/>
                                                 <connections>
-                                                    <action selector="fourthImageButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EZS-Yf-rO9"/>
+                                                    <action selector="didTapImagesButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YXW-rc-9JT"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -114,31 +114,34 @@
                                 </variation>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fVS-9o-g1S">
-                                <rect key="frame" x="41.5" y="755" width="331" height="27"/>
+                                <rect key="frame" x="41.5" y="621.5" width="331" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UaI-gd-D9j">
-                                        <rect key="frame" x="0.0" y="0.0" width="105" height="27"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UaI-gd-D9j">
+                                        <rect key="frame" x="0.0" y="0.0" width="105" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" image="Layout 1"/>
                                         <connections>
                                             <action selector="firstViewDisposition:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hh4-0l-R7C"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fw-Jn-ihd">
-                                        <rect key="frame" x="113" y="0.0" width="105" height="27"/>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fw-Jn-ihd">
+                                        <rect key="frame" x="113" y="0.0" width="105" height="50"/>
                                         <state key="normal" image="Layout 2"/>
                                         <connections>
                                             <action selector="secondViewDisposition:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cL9-Vs-xae"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yW8-or-TqR">
-                                        <rect key="frame" x="226" y="0.0" width="105" height="27"/>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yW8-or-TqR">
+                                        <rect key="frame" x="226" y="0.0" width="105" height="50"/>
                                         <state key="normal" image="Layout 3"/>
                                         <connections>
                                             <action selector="thirdViewDisposition:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZRP-3B-cpH"/>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="f20-lw-tRv"/>
+                                </constraints>
                                 <variation key="heightClass=regular-widthClass=compact" axis="horizontal"/>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Instagrid" translatesAutoresizingMaskIntoConstraints="NO" id="Fxx-3j-TvN">
@@ -157,7 +160,6 @@
                             <constraint firstItem="kP3-rS-Q3O" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5uo-oH-2N6"/>
                             <constraint firstItem="Fxx-3j-TvN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="6Ob-Gh-unc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="iCX-uB-XAm" secondAttribute="trailing" constant="8" id="CTf-GP-7Od"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fVS-9o-g1S" secondAttribute="bottom" constant="80" id="GPy-0H-YuV"/>
                             <constraint firstItem="iCX-uB-XAm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="JV4-EA-9wD"/>
                             <constraint firstItem="kP3-rS-Q3O" firstAttribute="top" secondItem="iCX-uB-XAm" secondAttribute="bottom" constant="20" id="LKB-ta-dlW"/>
                             <constraint firstItem="iCX-uB-XAm" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="O6O-y2-TVE"/>
@@ -181,6 +183,7 @@
                             <constraint firstItem="iCX-uB-XAm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="ti2-eY-eFz"/>
                             <constraint firstItem="iCX-uB-XAm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="vOr-ay-9LW"/>
                             <constraint firstItem="kP3-rS-Q3O" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="w0K-qW-jLq"/>
+                            <constraint firstItem="fVS-9o-g1S" firstAttribute="top" secondItem="kP3-rS-Q3O" secondAttribute="bottom" constant="8" symbolic="YES" id="xHF-Nc-ldj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <variation key="default">
@@ -205,7 +208,6 @@
                             <mask key="constraints">
                                 <exclude reference="3AN-Mz-ykq"/>
                                 <exclude reference="CTf-GP-7Od"/>
-                                <exclude reference="GPy-0H-YuV"/>
                                 <exclude reference="lL6-th-hUh"/>
                                 <exclude reference="LKB-ta-dlW"/>
                                 <include reference="QnL-eL-ocn"/>
@@ -233,10 +235,10 @@
                         <outletCollection property="buttonDisposition" destination="UaI-gd-D9j" collectionClass="NSMutableArray" id="HdE-D9-BQ8"/>
                         <outletCollection property="buttonDisposition" destination="9fw-Jn-ihd" collectionClass="NSMutableArray" id="txb-sQ-ShS"/>
                         <outletCollection property="buttonDisposition" destination="yW8-or-TqR" collectionClass="NSMutableArray" id="gXc-oH-S3c"/>
-                        <outletCollection property="firstAndSecondButton" destination="7OV-Ze-Ncy" collectionClass="NSMutableArray" id="oyT-14-nEo"/>
-                        <outletCollection property="firstAndSecondButton" destination="hCC-hF-THV" collectionClass="NSMutableArray" id="m6c-rF-Hq6"/>
-                        <outletCollection property="thirdAndFourthButton" destination="cVb-g5-dyh" collectionClass="NSMutableArray" id="TqY-kT-Vj3"/>
-                        <outletCollection property="thirdAndFourthButton" destination="IT6-vC-nsV" collectionClass="NSMutableArray" id="6VT-1e-YLA"/>
+                        <outletCollection property="imagesButtons" destination="7OV-Ze-Ncy" collectionClass="NSMutableArray" id="kgs-An-bX3"/>
+                        <outletCollection property="imagesButtons" destination="hCC-hF-THV" collectionClass="NSMutableArray" id="wdb-sm-4DZ"/>
+                        <outletCollection property="imagesButtons" destination="cVb-g5-dyh" collectionClass="NSMutableArray" id="GK0-Cj-jeW"/>
+                        <outletCollection property="imagesButtons" destination="IT6-vC-nsV" collectionClass="NSMutableArray" id="YjP-R2-wpM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

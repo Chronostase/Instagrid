@@ -8,18 +8,20 @@
 
 import UIKit
 
+
+enum Style {
+    case used, unused, done
+}
 class ViewController: UIViewController {
+    
+    var tag = Int()
     
     //MARK: - IBAction
     
     //FIX: add Image control func
-    @IBAction func firstImageButton(_ sender: UIButton) {
-    }
-    @IBAction func secondImageButton(_ sender: UIButton) {
-    }
-    @IBAction func thirdImageButton(_ sender: UIButton) {
-    }
-    @IBAction func fourthImageButton(_ sender: UIButton) {
+    @IBAction func didTapImagesButtons(_ sender: UIButton) {
+        tag = sender.tag
+        pickAnImage()
     }
     
     @IBAction func firstViewDisposition(_ sender: UIButton) {
@@ -38,8 +40,8 @@ class ViewController: UIViewController {
     //MARK: - IBOutlet
     
     @IBOutlet weak var instructionLabel: UILabel!
-    @IBOutlet var firstAndSecondButton: [UIButton]!
-    @IBOutlet var thirdAndFourthButton: [UIButton]!
+    @IBOutlet var imagesButtons: [UIButton]!
+    
     @IBOutlet var buttonDisposition: [UIButton]!
 
     let main = Main()
@@ -47,22 +49,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         giveNameToLabel()
+        setupImageAspect()
     }
     
     //MARK: - Func
     
     func giveNameToLabel() {
         instructionLabel.text = """
-                Swipe up to share ^
+                        ^
+                Swipe up to share
         """
     }
     
     //MARK: - Image Disposition
-    
-    enum Style {
-        case used, unused
-    }
-    
+
     var style: Style = .unused
     
 //    func setStyle(_ style: Style) {
@@ -74,31 +74,52 @@ class ViewController: UIViewController {
 //        }
 //    }
     
-    private func doFirstDisposition() {
-        firstAndSecondButton[0].isHidden = false
-        firstAndSecondButton[1].isHidden = true
-        
-        for image in thirdAndFourthButton {
-            image.isHidden = false
+    private func setupImageAspect() {
+        for imageButton in imagesButtons {
+            imageButton.imageView?.contentMode = .scaleAspectFill
         }
+    }
+    
+    private func pickAnImage() {
+        let pickerImageController = UIImagePickerController()
+        
+        pickerImageController.delegate = self
+        pickerImageController.allowsEditing = false
+        pickerImageController.modalPresentationStyle = .overCurrentContext
+        pickerImageController.sourceType = .photoLibrary
+        
+        self.present(pickerImageController, animated: true)
+    }
+    
+    private func doFirstDisposition() {
+        imagesButtons[0].isHidden = false
+        imagesButtons[1].isHidden = true
+        imagesButtons[2].isHidden = false
+        imagesButtons[3].isHidden = false
     }
     
     private func doSecondDisposition() {
-        for image in firstAndSecondButton {
+        for image in imagesButtons {
             image.isHidden = false
         }
-        thirdAndFourthButton[0].isHidden = false
-        thirdAndFourthButton[1].isHidden = true
+        imagesButtons[0].isHidden = false
+        imagesButtons[3].isHidden = true
     }
     
     private func doThirdDisposition() {
-        for image in firstAndSecondButton {
-            image.isHidden = false
-        }
-        for image in thirdAndFourthButton {
+        for image in imagesButtons {
             image.isHidden = false
         }
     }
-    
+
 }
 
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            let selectedButton = imagesButtons[tag]
+            selectedButton.setImage(image, for: .normal)
+        }
+        picker.dismiss(animated: true)
+    }
+}
