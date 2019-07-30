@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kP3-rS-Q3O">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kP3-rS-Q3O" userLabel="MainView">
                                 <rect key="frame" x="41.5" y="282.5" width="331" height="331"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ES8-jk-7KA">
@@ -67,6 +67,7 @@
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.15834364295005798" green="0.40798074007034302" blue="0.57901817560195923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="kP3-rS-Q3O" secondAttribute="height" multiplier="1:1" id="Bq5-kM-QSH"/>
                                     <constraint firstItem="cFc-3j-z1s" firstAttribute="centerX" secondItem="kP3-rS-Q3O" secondAttribute="centerX" id="JwY-lf-l73"/>
@@ -93,8 +94,11 @@
                                         <exclude reference="hGE-SF-KUY"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="K4b-ks-KZb" appends="YES" id="gIz-4n-23O"/>
+                                </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCX-uB-XAm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCX-uB-XAm">
                                 <rect key="frame" x="177" y="229.5" width="60.5" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="iCX-uB-XAm" secondAttribute="height" multiplier="30:157" id="fgd-cq-kMe"/>
@@ -114,10 +118,10 @@
                                 </variation>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fVS-9o-g1S">
-                                <rect key="frame" x="41.5" y="621.5" width="331" height="50"/>
+                                <rect key="frame" x="58" y="747.5" width="298" height="94.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UaI-gd-D9j">
-                                        <rect key="frame" x="0.0" y="0.0" width="105" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="94" height="94.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" image="Layout 1"/>
                                         <connections>
@@ -125,14 +129,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fw-Jn-ihd">
-                                        <rect key="frame" x="113" y="0.0" width="105" height="50"/>
+                                        <rect key="frame" x="102" y="0.0" width="94" height="94.5"/>
                                         <state key="normal" image="Layout 2"/>
                                         <connections>
                                             <action selector="secondViewDisposition:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cL9-Vs-xae"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yW8-or-TqR">
-                                        <rect key="frame" x="226" y="0.0" width="105" height="50"/>
+                                        <rect key="frame" x="204" y="0.0" width="94" height="94.5"/>
                                         <state key="normal" image="Layout 3"/>
                                         <connections>
                                             <action selector="thirdViewDisposition:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZRP-3B-cpH"/>
@@ -140,7 +144,7 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="f20-lw-tRv"/>
+                                    <constraint firstAttribute="width" secondItem="fVS-9o-g1S" secondAttribute="height" multiplier="331:105" id="KnW-Yl-4Yd"/>
                                 </constraints>
                                 <variation key="heightClass=regular-widthClass=compact" axis="horizontal"/>
                             </stackView>
@@ -153,6 +157,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.73751354217529297" green="0.84208106994628906" blue="0.89006882905960083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fVS-9o-g1S" secondAttribute="bottom" constant="20" id="02d-2K-O2X"/>
                             <constraint firstItem="iCX-uB-XAm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="2U7-ra-32y"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fVS-9o-g1S" secondAttribute="bottom" constant="8" id="3AN-Mz-ykq">
                                 <variation key="heightClass=compact" constant="15"/>
@@ -174,7 +179,7 @@
                             <constraint firstItem="fVS-9o-g1S" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YXv-gr-A13"/>
                             <constraint firstItem="iCX-uB-XAm" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Yfk-1h-iix"/>
                             <constraint firstItem="kP3-rS-Q3O" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="ZFc-Mw-3QO"/>
-                            <constraint firstItem="fVS-9o-g1S" firstAttribute="width" secondItem="kP3-rS-Q3O" secondAttribute="width" id="fUg-ft-XPM"/>
+                            <constraint firstItem="fVS-9o-g1S" firstAttribute="width" secondItem="kP3-rS-Q3O" secondAttribute="width" multiplier="0.9" id="fUg-ft-XPM"/>
                             <constraint firstItem="fVS-9o-g1S" firstAttribute="leading" secondItem="kP3-rS-Q3O" secondAttribute="trailing" constant="15" id="fXW-cA-gqh">
                                 <variation key="heightClass=compact" constant="20"/>
                             </constraint>
@@ -183,7 +188,6 @@
                             <constraint firstItem="iCX-uB-XAm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="ti2-eY-eFz"/>
                             <constraint firstItem="iCX-uB-XAm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="vOr-ay-9LW"/>
                             <constraint firstItem="kP3-rS-Q3O" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="w0K-qW-jLq"/>
-                            <constraint firstItem="fVS-9o-g1S" firstAttribute="top" secondItem="kP3-rS-Q3O" secondAttribute="bottom" constant="8" symbolic="YES" id="xHF-Nc-ldj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <variation key="default">
@@ -232,6 +236,7 @@
                     </view>
                     <connections>
                         <outlet property="instructionLabel" destination="iCX-uB-XAm" id="Og8-Mh-DBg"/>
+                        <outlet property="mainView" destination="kP3-rS-Q3O" id="gCS-ri-42Y"/>
                         <outletCollection property="buttonDisposition" destination="UaI-gd-D9j" collectionClass="NSMutableArray" id="HdE-D9-BQ8"/>
                         <outletCollection property="buttonDisposition" destination="9fw-Jn-ihd" collectionClass="NSMutableArray" id="txb-sQ-ShS"/>
                         <outletCollection property="buttonDisposition" destination="yW8-or-TqR" collectionClass="NSMutableArray" id="gXc-oH-S3c"/>
@@ -242,6 +247,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="up" id="K4b-ks-KZb">
+                    <connections>
+                        <action selector="swipToShare:" destination="BYZ-38-t0r" id="ZMK-83-160"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="134.78260869565219" y="112.5"/>
         </scene>

@@ -8,10 +8,6 @@
 
 import UIKit
 
-
-enum Style {
-    case used, unused, done
-}
 class ViewController: UIViewController {
     
     var tag = Int()
@@ -19,26 +15,34 @@ class ViewController: UIViewController {
     //MARK: - IBAction
     
     //FIX: add Image control func
+    @IBAction func swipToShare(_ sender: UISwipeGestureRecognizer) {
+        UIGraphicsBeginImageContext(mainView.frame.size)
+        mainView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        if let image = UIGraphicsGetImageFromCurrentImageContext() {
+            let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+            activityVC.popoverPresentationController?.sourceView = self.view
+            
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
     @IBAction func didTapImagesButtons(_ sender: UIButton) {
         tag = sender.tag
         pickAnImage()
     }
     
     @IBAction func firstViewDisposition(_ sender: UIButton) {
-        style = .used
         doFirstDisposition()
     }
     @IBAction func secondViewDisposition(_ sender: UIButton) {
-        style = .used
         doSecondDisposition()
     }
     @IBAction func thirdViewDisposition(_ sender: UIButton) {
-        style = .used
         doThirdDisposition()
     }
     
     //MARK: - IBOutlet
     
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet var imagesButtons: [UIButton]!
     
@@ -56,24 +60,13 @@ class ViewController: UIViewController {
     
     func giveNameToLabel() {
         instructionLabel.text = """
-                        ^
-                Swipe up to share
+            ^
+        Swipe up to share
         """
     }
     
     //MARK: - Image Disposition
 
-    var style: Style = .unused
-    
-//    func setStyle(_ style: Style) {
-//        switch style {
-//
-//        case .used:
-//        case .unused:
-//
-//        }
-//    }
-    
     private func setupImageAspect() {
         for imageButton in imagesButtons {
             imageButton.imageView?.contentMode = .scaleAspectFill
