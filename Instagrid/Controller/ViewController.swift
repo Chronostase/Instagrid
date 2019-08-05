@@ -14,17 +14,10 @@ class ViewController: UIViewController {
     
     //MARK: - IBAction
     
-    //FIX: add Image control func
     @IBAction func swipToShare(_ sender: UISwipeGestureRecognizer) {
-        UIGraphicsBeginImageContext(mainView.frame.size)
-        mainView.layer.render(in: UIGraphicsGetCurrentContext()!)
-        if let image = UIGraphicsGetImageFromCurrentImageContext() {
-            let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-            activityVC.popoverPresentationController?.sourceView = self.view
-            
-            self.present(activityVC, animated: true, completion: nil)
-        }
+        shareImage()
     }
+    
     @IBAction func didTapImagesButtons(_ sender: UIButton) {
         tag = sender.tag
         pickAnImage()
@@ -56,14 +49,6 @@ class ViewController: UIViewController {
         setupImageAspect()
     }
     
-    //MARK: - Func
-    
-    func giveNameToLabel() {
-        instructionLabel.text = """
-            ^
-        Swipe up to share
-        """
-    }
     
     //MARK: - Image Disposition
 
@@ -77,11 +62,11 @@ class ViewController: UIViewController {
         let pickerImageController = UIImagePickerController()
         
         pickerImageController.delegate = self
-        pickerImageController.allowsEditing = false
+//        pickerImageController.allowsEditing = false
         pickerImageController.modalPresentationStyle = .overCurrentContext
         pickerImageController.sourceType = .photoLibrary
         
-        self.present(pickerImageController, animated: true)
+        present(pickerImageController, animated: true)
     }
     
     private func doFirstDisposition() {
@@ -104,12 +89,38 @@ class ViewController: UIViewController {
             image.isHidden = false
         }
     }
-
+    
+    private func giveNameToLabel() {
+        instructionLabel.text = """
+        ^
+        Swipe up to share
+        """
+    }
+    
+    private func shareImage() {
+        UIGraphicsBeginImageContext(mainView.frame.size)
+        
+        guard let context = UIGraphicsGetCurrentContext() else {
+            return
+        }
+        mainView.layer.render(in: context)
+        
+        guard let image = UIGraphicsGetImageFromCurrentImageContext() else {
+            return
+        }
+        let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = view
+        
+        present(activityVC, animated: true)
+    }
 }
 
+//MARK: - ImagePickerControllerDelegate
+
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+        if let image = info[.originalImage] as? UIImage {
             let selectedButton = imagesButtons[tag]
             selectedButton.setImage(image, for: .normal)
         }
