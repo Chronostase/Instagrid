@@ -99,7 +99,7 @@
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCX-uB-XAm">
-                                <rect key="frame" x="177" y="229.5" width="60.5" height="33"/>
+                                <rect key="frame" x="8" y="229.5" width="398" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="iCX-uB-XAm" secondAttribute="height" multiplier="30:157" id="fgd-cq-kMe"/>
                                 </constraints>
@@ -185,7 +185,7 @@
                             <constraint firstItem="fVS-9o-g1S" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9cR-3F-HFb">
                                 <variation key="heightClass=compact" constant="10"/>
                             </constraint>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="iCX-uB-XAm" secondAttribute="trailing" constant="8" id="CTf-GP-7Od"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iCX-uB-XAm" secondAttribute="trailing" constant="8" id="CTf-GP-7Od"/>
                             <constraint firstAttribute="trailing" secondItem="fVS-9o-g1S" secondAttribute="trailing" constant="15" id="F7v-K9-Lib"/>
                             <constraint firstItem="iCX-uB-XAm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="JV4-EA-9wD"/>
                             <constraint firstItem="kP3-rS-Q3O" firstAttribute="top" secondItem="iCX-uB-XAm" secondAttribute="bottom" constant="20" id="LKB-ta-dlW"/>
@@ -224,14 +224,14 @@
                                 <exclude reference="3AN-Mz-ykq"/>
                                 <exclude reference="ciK-Xb-9qF"/>
                                 <exclude reference="lL6-th-hUh"/>
+                                <exclude reference="QnL-eL-ocn"/>
+                                <exclude reference="SeR-Ts-aIx"/>
                                 <exclude reference="JV4-EA-9wD"/>
                                 <exclude reference="O6O-y2-TVE"/>
                                 <exclude reference="Yfk-1h-iix"/>
                                 <exclude reference="jvx-g0-GO5"/>
                                 <exclude reference="ti2-eY-eFz"/>
                                 <exclude reference="vOr-ay-9LW"/>
-                                <exclude reference="QnL-eL-ocn"/>
-                                <exclude reference="SeR-Ts-aIx"/>
                                 <exclude reference="2J9-4C-uq1"/>
                                 <exclude reference="4Pj-jD-UcH"/>
                                 <exclude reference="9cR-3F-HFb"/>
@@ -249,6 +249,10 @@
                                 <exclude reference="CTf-GP-7Od"/>
                                 <exclude reference="ciK-Xb-9qF"/>
                                 <exclude reference="lL6-th-hUh"/>
+                                <exclude reference="LKB-ta-dlW"/>
+                                <include reference="QnL-eL-ocn"/>
+                                <include reference="SeR-Ts-aIx"/>
+                                <exclude reference="ZFc-Mw-3QO"/>
                                 <exclude reference="2U7-ra-32y"/>
                                 <exclude reference="JV4-EA-9wD"/>
                                 <include reference="O6O-y2-TVE"/>
@@ -257,10 +261,6 @@
                                 <include reference="jvx-g0-GO5"/>
                                 <exclude reference="ti2-eY-eFz"/>
                                 <include reference="vOr-ay-9LW"/>
-                                <exclude reference="LKB-ta-dlW"/>
-                                <include reference="QnL-eL-ocn"/>
-                                <include reference="SeR-Ts-aIx"/>
-                                <exclude reference="ZFc-Mw-3QO"/>
                                 <exclude reference="2J9-4C-uq1"/>
                                 <exclude reference="4Pj-jD-UcH"/>
                                 <include reference="9cR-3F-HFb"/>

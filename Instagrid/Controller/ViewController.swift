@@ -11,11 +11,12 @@ import UIKit
 class ViewController: UIViewController {
     
     var tag = Int()
+    var activityVC: UIActivityViewController?
     
     //MARK: - IBAction
-    
+
     @IBAction func swipToShare(_ sender: UISwipeGestureRecognizer) {
-        shareImage()
+        mainViewAnimation()
     }
     
     @IBAction func didTapImagesButtons(_ sender: UIButton) {
@@ -41,33 +42,29 @@ class ViewController: UIViewController {
     
     @IBOutlet var buttonDisposition: [UIButton]!
 
-    let main = Main()
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         giveNameToLabel()
         setupImageAspect()
     }
     
+    //MARK: - Setup
     
-    //MARK: - Image Disposition
-
     private func setupImageAspect() {
         for imageButton in imagesButtons {
             imageButton.imageView?.contentMode = .scaleAspectFill
         }
     }
     
-    private func pickAnImage() {
-        let pickerImageController = UIImagePickerController()
-        
-        pickerImageController.delegate = self
-//        pickerImageController.allowsEditing = false
-        pickerImageController.modalPresentationStyle = .overCurrentContext
-        pickerImageController.sourceType = .photoLibrary
-        
-        present(pickerImageController, animated: true)
+    private func giveNameToLabel() {
+        instructionLabel.text = """
+        ^
+        Swipe up to share
+        """
     }
+    
+    //MARK: - Image Disposition
     
     private func doFirstDisposition() {
         imagesButtons[0].isHidden = false
@@ -90,12 +87,37 @@ class ViewController: UIViewController {
         }
     }
     
-    private func giveNameToLabel() {
-        instructionLabel.text = """
-        ^
-        Swipe up to share
-        """
+    //MARK: - Animation
+    
+    private func doAnimation(y screenSize: CGFloat, animationCompletion void: ()) {
+        var translationTransform: CGAffineTransform
+        translationTransform = CGAffineTransform(translationX: 0, y: screenSize)
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.mainView.transform = translationTransform
+        }) { (finished) in
+            void
+        }
     }
+    
+    private func doAanimation(y screenSize: CGFloat, isShareImageNeeded: Bool) {
+        let translationTransform = CGAffineTransform(translationX: 0, y: screenSize)
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.mainView.transform = translationTransform
+        }) { (finished) in
+            if isShareImageNeeded {
+                self.shareImage()
+            }
+        }
+    }
+    
+    private func mainViewAnimation() {
+        let screenHeight = UIScreen.main.bounds.height
+        doAnimation(y: -screenHeight, animationCompletion: shareImage())
+    }
+    
+    //MARK: Image functionality
     
     private func shareImage() {
         UIGraphicsBeginImageContext(mainView.frame.size)
@@ -108,10 +130,40 @@ class ViewController: UIViewController {
         guard let image = UIGraphicsGetImageFromCurrentImageContext() else {
             return
         }
-        let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-        activityVC.popoverPresentationController?.sourceView = view
+        
+        presentActivityVC(withItem: image)
+    }
+    
+    private func presentActivityVC(withItem image: UIImage) {
+        setupActivityVC(withItems: image)
+        
+        guard let activityVC = activityVC else {
+            return
+        }
         
         present(activityVC, animated: true)
+    }
+    
+    private func setupActivityVC(withItems items: UIImage) {
+        activityVC = UIActivityViewController(activityItems: [items], applicationActivities: nil)
+        activityVC?.popoverPresentationController?.sourceView = self.view
+        activityVC?.completionWithItemsHandler = { (activityType, completed, items, error) in
+            if error != nil {
+                // displayAlert()
+            }
+            
+            self.doAnimation(y: 0, animationCompletion: ())
+        }
+    }
+    
+    private func pickAnImage() {
+        let pickerImageController = UIImagePickerController()
+        
+        pickerImageController.delegate = self
+        pickerImageController.modalPresentationStyle = .overCurrentContext
+        pickerImageController.sourceType = .photoLibrary
+        
+        present(pickerImageController, animated: true)
     }
 }
 
