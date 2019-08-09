@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     var activityVC: UIActivityViewController?
     
     //MARK: - IBAction
-
+    
     @IBAction func swipToShare(_ sender: UISwipeGestureRecognizer) {
         mainViewAnimation()
     }
@@ -25,13 +25,17 @@ class ViewController: UIViewController {
     }
     
     @IBAction func firstViewDisposition(_ sender: UIButton) {
+        resetSelectedDisposition(sender)
         doFirstDisposition()
     }
     @IBAction func secondViewDisposition(_ sender: UIButton) {
+        resetSelectedDisposition(sender)
         doSecondDisposition()
     }
     @IBAction func thirdViewDisposition(_ sender: UIButton) {
+        resetSelectedDisposition(sender)
         doThirdDisposition()
+        buttonDisposition[sender.tag].imageView?.image = UIImage(named: "Selected")
     }
     
     //MARK: - IBOutlet
@@ -39,17 +43,22 @@ class ViewController: UIViewController {
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet var imagesButtons: [UIButton]!
-    
     @IBOutlet var buttonDisposition: [UIButton]!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         giveNameToLabel()
         setupImageAspect()
     }
     
     //MARK: - Setup
+    
+    private func resetSelectedDisposition(_ sender: UIButton) {
+        for button in buttonDisposition {
+            button.setImage(nil, for: .normal)
+        }
+        buttonDisposition[sender.tag].setImage(#imageLiteral(resourceName: "Selected.png"), for: .normal)
+    }
     
     private func setupImageAspect() {
         for imageButton in imagesButtons {
@@ -88,19 +97,8 @@ class ViewController: UIViewController {
     }
     
     //MARK: - Animation
-    
-    private func doAnimation(y screenSize: CGFloat, animationCompletion void: ()) {
-        var translationTransform: CGAffineTransform
-        translationTransform = CGAffineTransform(translationX: 0, y: screenSize)
         
-        UIView.animate(withDuration: 0.3, animations: {
-            self.mainView.transform = translationTransform
-        }) { (finished) in
-            void
-        }
-    }
-    
-    private func doAanimation(y screenSize: CGFloat, isShareImageNeeded: Bool) {
+    private func doAnimation(y screenSize: CGFloat, isShareImageNeeded: Bool) {
         let translationTransform = CGAffineTransform(translationX: 0, y: screenSize)
         
         UIView.animate(withDuration: 0.3, animations: {
@@ -114,7 +112,7 @@ class ViewController: UIViewController {
     
     private func mainViewAnimation() {
         let screenHeight = UIScreen.main.bounds.height
-        doAnimation(y: -screenHeight, animationCompletion: shareImage())
+        doAnimation(y: -screenHeight, isShareImageNeeded: true)
     }
     
     //MARK: Image functionality
@@ -152,7 +150,7 @@ class ViewController: UIViewController {
                 // displayAlert()
             }
             
-            self.doAnimation(y: 0, animationCompletion: ())
+            self.doAnimation(y: 0, isShareImageNeeded: false)
         }
     }
     
