@@ -98,7 +98,7 @@
                                     <outletCollection property="gestureRecognizers" destination="K4b-ks-KZb" appends="YES" id="gIz-4n-23O"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCX-uB-XAm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to share ^" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCX-uB-XAm">
                                 <rect key="frame" x="8" y="229.5" width="398" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="iCX-uB-XAm" secondAttribute="height" multiplier="30:157" id="fgd-cq-kMe"/>
@@ -277,6 +277,7 @@
                     <connections>
                         <outlet property="instructionLabel" destination="iCX-uB-XAm" id="Og8-Mh-DBg"/>
                         <outlet property="mainView" destination="kP3-rS-Q3O" id="gCS-ri-42Y"/>
+                        <outlet property="swipeGestureRecognizer" destination="K4b-ks-KZb" id="kAa-6X-VKL"/>
                         <outletCollection property="buttonDisposition" destination="UaI-gd-D9j" collectionClass="NSMutableArray" id="HdE-D9-BQ8"/>
                         <outletCollection property="buttonDisposition" destination="9fw-Jn-ihd" collectionClass="NSMutableArray" id="txb-sQ-ShS"/>
                         <outletCollection property="buttonDisposition" destination="yW8-or-TqR" collectionClass="NSMutableArray" id="gXc-oH-S3c"/>

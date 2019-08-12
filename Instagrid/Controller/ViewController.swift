@@ -13,6 +13,12 @@ class ViewController: UIViewController {
     var tag = Int()
     var activityVC: UIActivityViewController?
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupImageAspect()
+    }
+
+    
     //MARK: - IBAction
     
     @IBAction func swipToShare(_ sender: UISwipeGestureRecognizer) {
@@ -44,14 +50,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet var imagesButtons: [UIButton]!
     @IBOutlet var buttonDisposition: [UIButton]!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        giveNameToLabel()
-        setupImageAspect()
-    }
+    @IBOutlet var swipeGestureRecognizer: UISwipeGestureRecognizer!
     
     //MARK: - Setup
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: nil) { _ in
+            if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft {
+                self.swipeGestureRecognizer.direction = .left
+                self.instructionLabel.text = "Swipe left to share <"
+            } else if UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
+                self.swipeGestureRecognizer.direction = .left
+                self.instructionLabel.text = "Swipe left to share <"
+            } else if UIDevice.current.orientation == UIDeviceOrientation.portrait {
+                self.swipeGestureRecognizer.direction = .up
+                self.instructionLabel.text = "Swipe up to share ^"
+            }
+        }
+    }
     
     private func resetSelectedDisposition(_ sender: UIButton) {
         for button in buttonDisposition {
@@ -64,13 +81,6 @@ class ViewController: UIViewController {
         for imageButton in imagesButtons {
             imageButton.imageView?.contentMode = .scaleAspectFill
         }
-    }
-    
-    private func giveNameToLabel() {
-        instructionLabel.text = """
-        ^
-        Swipe up to share
-        """
     }
     
     //MARK: - Image Disposition
@@ -97,9 +107,9 @@ class ViewController: UIViewController {
     }
     
     //MARK: - Animation
-        
-    private func doAnimation(y screenSize: CGFloat, isShareImageNeeded: Bool) {
-        let translationTransform = CGAffineTransform(translationX: 0, y: screenSize)
+    
+    private func doAnimation(x: CGFloat, y screenSize: CGFloat, isShareImageNeeded: Bool) {
+        let translationTransform = CGAffineTransform(translationX: x, y: screenSize)
         
         UIView.animate(withDuration: 0.3, animations: {
             self.mainView.transform = translationTransform
@@ -112,10 +122,15 @@ class ViewController: UIViewController {
     
     private func mainViewAnimation() {
         let screenHeight = UIScreen.main.bounds.height
-        doAnimation(y: -screenHeight, isShareImageNeeded: true)
+        let screenWidth = UIScreen.main.bounds.width
+        if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft || UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
+            doAnimation(x: -screenWidth, y: 0, isShareImageNeeded: true)
+        } else if UIDevice.current.orientation == UIDeviceOrientation.portrait {
+        doAnimation(x: 0, y: -screenHeight, isShareImageNeeded: true)
+        }
     }
     
-    //MARK: Image functionality
+    //MARK: - Image functionality
     
     private func shareImage() {
         UIGraphicsBeginImageContext(mainView.frame.size)
@@ -150,7 +165,7 @@ class ViewController: UIViewController {
                 // displayAlert()
             }
             
-            self.doAnimation(y: 0, isShareImageNeeded: false)
+            self.doAnimation(x: 0, y: 0, isShareImageNeeded: false)
         }
     }
     
