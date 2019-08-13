@@ -11,11 +11,18 @@ import UIKit
 class ViewController: UIViewController {
     
     var tag = Int()
+    var activityVC: UIActivityViewController?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupImageAspect()
+    }
+    
     
     //MARK: - IBAction
     
     @IBAction func swipToShare(_ sender: UISwipeGestureRecognizer) {
-        shareImage()
+        mainViewAnimation()
     }
     
     @IBAction func didTapImagesButtons(_ sender: UIButton) {
@@ -24,13 +31,17 @@ class ViewController: UIViewController {
     }
     
     @IBAction func firstViewDisposition(_ sender: UIButton) {
+        resetSelectedDisposition(sender)
         doFirstDisposition()
     }
     @IBAction func secondViewDisposition(_ sender: UIButton) {
+        resetSelectedDisposition(sender)
         doSecondDisposition()
     }
     @IBAction func thirdViewDisposition(_ sender: UIButton) {
+        resetSelectedDisposition(sender)
         doThirdDisposition()
+        buttonDisposition[sender.tag].imageView?.image = UIImage(named: "Selected")
     }
     
     //MARK: - IBOutlet
@@ -38,36 +49,50 @@ class ViewController: UIViewController {
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet var imagesButtons: [UIButton]!
-    
     @IBOutlet var buttonDisposition: [UIButton]!
-
-    let main = Main()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        giveNameToLabel()
-        setupImageAspect()
+    @IBOutlet var swipeGestureRecognizer: UISwipeGestureRecognizer!
+    
+    //MARK: - Setup
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: nil) { _ in
+            if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft {
+                self.swipeGestureRecognizer.direction = .left
+                self.instructionLabel.text = "Swipe left to share <"
+            } else if UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
+                self.swipeGestureRecognizer.direction = .left
+                self.instructionLabel.text = "Swipe left to share <"
+            } else if UIDevice.current.orientation == UIDeviceOrientation.portrait {
+                self.swipeGestureRecognizer.direction = .up
+                self.instructionLabel.text = "Swipe up to share ^"
+            }
+        }
     }
     
+    private func displayAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true)
+    }
     
-    //MARK: - Image Disposition
-
+    private func resetSelectedDisposition(_ sender: UIButton) {
+        for button in buttonDisposition {
+            button.setImage(nil, for: .normal)
+        }
+        buttonDisposition[sender.tag].setImage(#imageLiteral(resourceName: "Selected.png"), for: .normal)
+    }
+    
     private func setupImageAspect() {
         for imageButton in imagesButtons {
             imageButton.imageView?.contentMode = .scaleAspectFill
         }
     }
     
-    private func pickAnImage() {
-        let pickerImageController = UIImagePickerController()
-        
-        pickerImageController.delegate = self
-//        pickerImageController.allowsEditing = false
-        pickerImageController.modalPresentationStyle = .overCurrentContext
-        pickerImageController.sourceType = .photoLibrary
-        
-        present(pickerImageController, animated: true)
-    }
+    //MARK: - Image Disposition
     
     private func doFirstDisposition() {
         imagesButtons[0].isHidden = false
@@ -90,28 +115,77 @@ class ViewController: UIViewController {
         }
     }
     
-    private func giveNameToLabel() {
-        instructionLabel.text = """
-        ^
-        Swipe up to share
-        """
+    //MARK: - Animation
+    
+    private func doAnimation(x: CGFloat, y screenSize: CGFloat, isShareImageNeeded: Bool) {
+        let translationTransform = CGAffineTransform(translationX: x, y: screenSize)
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.mainView.transform = translationTransform
+        }) { (finished) in
+            if isShareImageNeeded {
+                self.shareImage()
+            }
+        }
     }
+    
+    private func mainViewAnimation() {
+        let screenHeight = UIScreen.main.bounds.height
+        let screenWidth = UIScreen.main.bounds.width
+        if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft || UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
+            doAnimation(x: -screenWidth, y: 0, isShareImageNeeded: true)
+        } else if UIDevice.current.orientation == UIDeviceOrientation.portrait {
+            doAnimation(x: 0, y: -screenHeight, isShareImageNeeded: true)
+        }
+    }
+    
+    //MARK: - Image functionality
     
     private func shareImage() {
         UIGraphicsBeginImageContext(mainView.frame.size)
         
         guard let context = UIGraphicsGetCurrentContext() else {
-            return
+            return displayAlert(title: "Can't get the current context", message: "Please try again")
         }
         mainView.layer.render(in: context)
         
         guard let image = UIGraphicsGetImageFromCurrentImageContext() else {
-            return
+            return displayAlert(title: "Can't get image from current context", message: "Please try again")
         }
-        let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-        activityVC.popoverPresentationController?.sourceView = view
+        
+        presentActivityVC(withItem: image)
+    }
+    
+    private func presentActivityVC(withItem image: UIImage) {
+        setupActivityVC(withItems: image)
+        
+        guard let activityVC = activityVC else {
+            return displayAlert(title: "Activity controller cannot be open", message: "Please try again")
+        }
         
         present(activityVC, animated: true)
+    }
+    
+    private func setupActivityVC(withItems items: UIImage) {
+        activityVC = UIActivityViewController(activityItems: [items], applicationActivities: nil)
+        activityVC?.popoverPresentationController?.sourceView = self.view
+        activityVC?.completionWithItemsHandler = { (activityType, completed, items, error) in
+            if error != nil {
+                self.displayAlert(title: "Something Wrong happend.", message: "Please try again")
+            }
+            
+            self.doAnimation(x: 0, y: 0, isShareImageNeeded: false)
+        }
+    }
+    
+    private func pickAnImage() {
+        let pickerImageController = UIImagePickerController()
+        
+        pickerImageController.delegate = self
+        pickerImageController.modalPresentationStyle = .overCurrentContext
+        pickerImageController.sourceType = .photoLibrary
+        
+        present(pickerImageController, animated: true)
     }
 }
 
