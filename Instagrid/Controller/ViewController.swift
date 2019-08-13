@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setupImageAspect()
     }
-
+    
     
     //MARK: - IBAction
     
@@ -68,6 +68,15 @@ class ViewController: UIViewController {
                 self.instructionLabel.text = "Swipe up to share ^"
             }
         }
+    }
+    
+    private func displayAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true)
     }
     
     private func resetSelectedDisposition(_ sender: UIButton) {
@@ -126,7 +135,7 @@ class ViewController: UIViewController {
         if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft || UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
             doAnimation(x: -screenWidth, y: 0, isShareImageNeeded: true)
         } else if UIDevice.current.orientation == UIDeviceOrientation.portrait {
-        doAnimation(x: 0, y: -screenHeight, isShareImageNeeded: true)
+            doAnimation(x: 0, y: -screenHeight, isShareImageNeeded: true)
         }
     }
     
@@ -136,12 +145,12 @@ class ViewController: UIViewController {
         UIGraphicsBeginImageContext(mainView.frame.size)
         
         guard let context = UIGraphicsGetCurrentContext() else {
-            return
+            return displayAlert(title: "Can't get the current context", message: "Please try again")
         }
         mainView.layer.render(in: context)
         
         guard let image = UIGraphicsGetImageFromCurrentImageContext() else {
-            return
+            return displayAlert(title: "Can't get image from current context", message: "Please try again")
         }
         
         presentActivityVC(withItem: image)
@@ -151,7 +160,7 @@ class ViewController: UIViewController {
         setupActivityVC(withItems: image)
         
         guard let activityVC = activityVC else {
-            return
+            return displayAlert(title: "Activity controller cannot be open", message: "Please try again")
         }
         
         present(activityVC, animated: true)
@@ -162,7 +171,7 @@ class ViewController: UIViewController {
         activityVC?.popoverPresentationController?.sourceView = self.view
         activityVC?.completionWithItemsHandler = { (activityType, completed, items, error) in
             if error != nil {
-                // displayAlert()
+                self.displayAlert(title: "Something Wrong happend.", message: "Please try again")
             }
             
             self.doAnimation(x: 0, y: 0, isShareImageNeeded: false)
