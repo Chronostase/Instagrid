@@ -57,24 +57,24 @@ class ViewController: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: nil) { _ in
-            if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft {
-                self.swipeGestureRecognizer.direction = .left
-                self.instructionLabel.text = "Swipe left to share <"
-            } else if UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
-                self.swipeGestureRecognizer.direction = .left
-                self.instructionLabel.text = "Swipe left to share <"
-            } else if UIDevice.current.orientation == UIDeviceOrientation.portrait {
-                self.swipeGestureRecognizer.direction = .up
-                self.instructionLabel.text = "Swipe up to share ^"
-            }
+            self.checkDeviceOrientation()
         }
     }
     
-    private func displayAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    private func checkDeviceOrientation() {
+        if UIDevice.current.orientation == UIDeviceOrientation.portrait {
+            self.swipeGestureRecognizer.direction = .up
+            self.instructionLabel.text = "Swipe up to share ^"
+        } else {
+            self.swipeGestureRecognizer.direction = .left
+            self.instructionLabel.text = "Swipe left to share <"
+        }
+    }
+    
+    private func displayAlert(title: String) {
+        let alert = UIAlertController(title: title, message: "Please try again.", preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         
         self.present(alert, animated: true)
     }
@@ -132,10 +132,10 @@ class ViewController: UIViewController {
     private func mainViewAnimation() {
         let screenHeight = UIScreen.main.bounds.height
         let screenWidth = UIScreen.main.bounds.width
-        if UIDevice.current.orientation == UIDeviceOrientation.landscapeLeft || UIDevice.current.orientation == UIDeviceOrientation.landscapeRight {
-            doAnimation(x: -screenWidth, y: 0, isShareImageNeeded: true)
-        } else if UIDevice.current.orientation == UIDeviceOrientation.portrait {
+        if UIDevice.current.orientation == UIDeviceOrientation.portrait {
             doAnimation(x: 0, y: -screenHeight, isShareImageNeeded: true)
+        } else {
+            doAnimation(x: -screenWidth, y: 0, isShareImageNeeded: true)
         }
     }
     
@@ -145,12 +145,12 @@ class ViewController: UIViewController {
         UIGraphicsBeginImageContext(mainView.frame.size)
         
         guard let context = UIGraphicsGetCurrentContext() else {
-            return displayAlert(title: "Can't get the current context", message: "Please try again")
+            return displayAlert(title: "Can't get the current context")
         }
         mainView.layer.render(in: context)
         
         guard let image = UIGraphicsGetImageFromCurrentImageContext() else {
-            return displayAlert(title: "Can't get image from current context", message: "Please try again")
+            return displayAlert(title: "Can't get image from current context")
         }
         
         presentActivityVC(withItem: image)
@@ -160,7 +160,7 @@ class ViewController: UIViewController {
         setupActivityVC(withItems: image)
         
         guard let activityVC = activityVC else {
-            return displayAlert(title: "Activity controller cannot be open", message: "Please try again")
+            return displayAlert(title: "Activity controller cannot be open")
         }
         
         present(activityVC, animated: true)
@@ -171,7 +171,7 @@ class ViewController: UIViewController {
         activityVC?.popoverPresentationController?.sourceView = self.view
         activityVC?.completionWithItemsHandler = { (activityType, completed, items, error) in
             if error != nil {
-                self.displayAlert(title: "Something Wrong happend.", message: "Please try again")
+                self.displayAlert(title: "Something Wrong happend.")
             }
             
             self.doAnimation(x: 0, y: 0, isShareImageNeeded: false)
