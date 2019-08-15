@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupImageAspect()
+        setSwipegesture()
     }
     
     
@@ -84,6 +85,10 @@ class ViewController: UIViewController {
             button.setImage(nil, for: .normal)
         }
         buttonDisposition[sender.tag].setImage(#imageLiteral(resourceName: "Selected.png"), for: .normal)
+    }
+    
+    private func setSwipegesture() {
+        swipeGestureRecognizer.direction = .up
     }
     
     private func setupImageAspect() {
