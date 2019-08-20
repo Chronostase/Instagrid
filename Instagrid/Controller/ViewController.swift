@@ -16,9 +16,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupImageAspect()
-        setSwipegesture()
+        setSwipeGesture()
     }
-    
     
     //MARK: - IBAction
     
@@ -42,7 +41,6 @@ class ViewController: UIViewController {
     @IBAction func thirdViewDisposition(_ sender: UIButton) {
         resetSelectedDisposition(sender)
         doThirdDisposition()
-        buttonDisposition[sender.tag].imageView?.image = UIImage(named: "Selected")
     }
     
     //MARK: - IBOutlet
@@ -64,11 +62,9 @@ class ViewController: UIViewController {
     
     private func checkDeviceOrientation() {
         if UIDevice.current.orientation == UIDeviceOrientation.portrait {
-            self.swipeGestureRecognizer.direction = .up
-            self.instructionLabel.text = "Swipe up to share ^"
+            setSwipe(.up, label: "Swipe up to share ^")
         } else {
-            self.swipeGestureRecognizer.direction = .left
-            self.instructionLabel.text = "Swipe left to share <"
+            setSwipe(.left, label: "Swipe left to share <")
         }
     }
     
@@ -87,8 +83,18 @@ class ViewController: UIViewController {
         buttonDisposition[sender.tag].setImage(#imageLiteral(resourceName: "Selected.png"), for: .normal)
     }
     
-    private func setSwipegesture() {
-        swipeGestureRecognizer.direction = .up
+    private func setSwipeGesture() {
+        let orientation = UIApplication.shared.statusBarOrientation
+        if orientation == .portrait {
+            setSwipe(.up, label: "Swipe up to share ^")
+        } else {
+            setSwipe(.left, label: "Swipe left to share <")
+        }
+    }
+    
+    private func setSwipe(_ direction: UISwipeGestureRecognizer.Direction, label: String) {
+        swipeGestureRecognizer.direction = direction
+        instructionLabel.text = label
     }
     
     private func setupImageAspect() {
@@ -122,13 +128,13 @@ class ViewController: UIViewController {
     
     //MARK: - Animation
     
-    private func doAnimation(x: CGFloat, y screenSize: CGFloat, isShareImageNeeded: Bool) {
-        let translationTransform = CGAffineTransform(translationX: x, y: screenSize)
+    private func doAnimation(x: CGFloat, y: CGFloat, shouldShareImage: Bool) {
+        let translationTransform = CGAffineTransform(translationX: x, y: y)
         
         UIView.animate(withDuration: 0.3, animations: {
             self.mainView.transform = translationTransform
         }) { (finished) in
-            if isShareImageNeeded {
+            if shouldShareImage {
                 self.shareImage()
             }
         }
@@ -138,9 +144,9 @@ class ViewController: UIViewController {
         let screenHeight = UIScreen.main.bounds.height
         let screenWidth = UIScreen.main.bounds.width
         if UIDevice.current.orientation == UIDeviceOrientation.portrait {
-            doAnimation(x: 0, y: -screenHeight, isShareImageNeeded: true)
+            doAnimation(x: 0, y: -screenHeight, shouldShareImage: true)
         } else {
-            doAnimation(x: -screenWidth, y: 0, isShareImageNeeded: true)
+            doAnimation(x: -screenWidth, y: 0, shouldShareImage: true)
         }
     }
     
@@ -179,7 +185,7 @@ class ViewController: UIViewController {
                 self.displayAlert(title: "Something Wrong happend.")
             }
             
-            self.doAnimation(x: 0, y: 0, isShareImageNeeded: false)
+            self.doAnimation(x: 0, y: 0, shouldShareImage: false)
         }
     }
     
