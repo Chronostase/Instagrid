@@ -35,17 +35,17 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7OV-Ze-Ncy">
                                                 <rect key="frame" x="0.0" y="0.0" width="140.66666666666666" height="139.33333333333334"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" red="0.9410940408706665" green="0.94122928380966187" blue="0.94106453657150269" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <state key="normal" image="Plus"/>
+                                                <state key="normal" image="PlusResized"/>
                                                 <connections>
                                                     <action selector="didTapImagesButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lYS-hI-irO"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCC-hF-THV">
                                                 <rect key="frame" x="157.66666666666663" y="0.0" width="140.33333333333337" height="139.33333333333334"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="Plus"/>
+                                                <color key="backgroundColor" red="0.9410940408706665" green="0.94122928380966187" blue="0.94106453657150269" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" image="PlusResized"/>
                                                 <connections>
                                                     <action selector="didTapImagesButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4de-fG-sBz"/>
                                                 </connections>
@@ -57,16 +57,16 @@
                                         <subviews>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVb-g5-dyh">
                                                 <rect key="frame" x="0.0" y="0.0" width="140.66666666666666" height="139.33333333333334"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="Plus"/>
+                                                <color key="backgroundColor" red="0.9410940408706665" green="0.94122928380966187" blue="0.94106453657150269" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" image="PlusResized"/>
                                                 <connections>
                                                     <action selector="didTapImagesButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cnr-zo-ln8"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IT6-vC-nsV">
                                                 <rect key="frame" x="157.66666666666663" y="0.0" width="140.33333333333337" height="139.33333333333334"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="Plus"/>
+                                                <color key="backgroundColor" red="0.9410940408706665" green="0.94122928380966187" blue="0.94106453657150269" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" image="PlusResized"/>
                                                 <connections>
                                                     <action selector="didTapImagesButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YXW-rc-9JT"/>
                                                 </connections>
@@ -367,6 +367,6 @@
         <image name="Layout 1" width="26.666666030883789" height="26.666666030883789"/>
         <image name="Layout 2" width="26.666666030883789" height="26.666666030883789"/>
         <image name="Layout 3" width="26.666666030883789" height="26.666666030883789"/>
-        <image name="Plus" width="13.333333015441895" height="13.333333015441895"/>
+        <image name="PlusResized" width="122" height="100"/>
     </resources>
 </document>
