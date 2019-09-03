@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  Instagrid
 //
 //  Created by Thomas on 03/07/2019.
@@ -8,15 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     
     var tag = Int()
     var activityVC: UIActivityViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupImageAspect()
-        setSwipeGesture()
+        launchingSetup()
     }
     
     //MARK: - IBAction
@@ -47,11 +46,18 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var instructionLabel: UILabel!
+    @IBOutlet weak var rafterLabel: UILabel!
     @IBOutlet var imagesButtons: [UIButton]!
     @IBOutlet var buttonDisposition: [UIButton]!
     @IBOutlet var swipeGestureRecognizer: UISwipeGestureRecognizer!
     
     //MARK: - Setup
+    
+    private func launchingSetup() {
+        setDefaultSelectedDisposition()
+        setupImageAspect()
+        setSwipeGesture()
+    }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -62,9 +68,9 @@ class ViewController: UIViewController {
     
     private func checkDeviceOrientation() {
         if UIDevice.current.orientation == UIDeviceOrientation.portrait {
-            setSwipe(.up, label: "Swipe up to share ^")
+            setSwipe(.up, label: "Swipe up to share ", swipeDirection: "^")
         } else {
-            setSwipe(.left, label: "Swipe left to share <")
+            setSwipe(.left, label: "Swipe left to share", swipeDirection: "<")
         }
     }
     
@@ -86,15 +92,16 @@ class ViewController: UIViewController {
     private func setSwipeGesture() {
         let orientation = UIApplication.shared.statusBarOrientation
         if orientation == .portrait {
-            setSwipe(.up, label: "Swipe up to share ^")
+            setSwipe(.up, label: "Swipe up to share ", swipeDirection: "^")
         } else {
-            setSwipe(.left, label: "Swipe left to share <")
+            setSwipe(.left, label: "Swipe left to share", swipeDirection: "<")
         }
     }
     
-    private func setSwipe(_ direction: UISwipeGestureRecognizer.Direction, label: String) {
+    private func setSwipe(_ direction: UISwipeGestureRecognizer.Direction, label: String, swipeDirection: String) {
         swipeGestureRecognizer.direction = direction
         instructionLabel.text = label
+        rafterLabel.text = swipeDirection
     }
     
     private func setupImageAspect() {
@@ -103,6 +110,9 @@ class ViewController: UIViewController {
         }
     }
     
+    private func setDefaultSelectedDisposition() {
+        buttonDisposition[2].setImage(#imageLiteral(resourceName: "Selected.png"), for: .normal)
+    }
     //MARK: - Image Disposition
     
     private func doFirstDisposition() {
@@ -195,14 +205,13 @@ class ViewController: UIViewController {
         pickerImageController.delegate = self
         pickerImageController.modalPresentationStyle = .overCurrentContext
         pickerImageController.sourceType = .photoLibrary
-        
         present(pickerImageController, animated: true)
     }
 }
 
 //MARK: - ImagePickerControllerDelegate
 
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension MainViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {

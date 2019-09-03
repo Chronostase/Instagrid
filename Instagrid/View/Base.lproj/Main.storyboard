@@ -10,11 +10,19 @@
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Delm-Medium.otf">
+            <string>Delm-Medium</string>
+        </array>
+        <array key="ThirstySoftRegular.otf">
+            <string>ThirstySoftRegular</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Instagrid" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Instagrid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -120,13 +128,13 @@
                                     <outletCollection property="gestureRecognizers" destination="K4b-ks-KZb" appends="YES" id="gIz-4n-23O"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to share ^" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCX-uB-XAm">
-                                <rect key="frame" x="8" y="229.33333333333334" width="398" height="33.000000000000028"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to share " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCX-uB-XAm">
+                                <rect key="frame" x="8" y="233.33333333333334" width="398" height="29.000000000000028"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="iCX-uB-XAm" secondAttribute="height" multiplier="30:157" id="fgd-cq-kMe"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="24"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="26"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -182,16 +190,26 @@
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" axis="horizontal"/>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Instagrid" translatesAutoresizingMaskIntoConstraints="NO" id="Fxx-3j-TvN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TcC-9M-AnO" userLabel="Rafter Label">
+                                <rect key="frame" x="8" y="197" width="398" height="31.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86N-Ts-wSD" userLabel="Title Label">
                                 <rect key="frame" x="8" y="52" width="398" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="arm-XC-iOG"/>
+                                    <constraint firstAttribute="height" constant="45" id="UpC-YC-2IK"/>
                                 </constraints>
-                            </imageView>
+                                <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="30"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.73751354217529297" green="0.84208106994628906" blue="0.89006882905960083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fVS-9o-g1S" secondAttribute="bottom" constant="20" id="02d-2K-O2X"/>
+                            <constraint firstItem="TcC-9M-AnO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1UL-Mb-jKP"/>
                             <constraint firstItem="fVS-9o-g1S" firstAttribute="top" secondItem="kP3-rS-Q3O" secondAttribute="bottom" constant="-310.5" id="2J9-4C-uq1"/>
                             <constraint firstItem="iCX-uB-XAm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="2U7-ra-32y"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fVS-9o-g1S" secondAttribute="bottom" constant="8" id="3AN-Mz-ykq">
@@ -201,9 +219,8 @@
                             <constraint firstItem="kP3-rS-Q3O" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5uo-oH-2N6">
                                 <variation key="heightClass=compact" constant="10"/>
                             </constraint>
-                            <constraint firstItem="Fxx-3j-TvN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="6Ob-Gh-unc">
-                                <variation key="heightClass=compact" constant="4"/>
-                            </constraint>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TcC-9M-AnO" secondAttribute="trailing" constant="8" id="6U1-sW-dk4"/>
+                            <constraint firstItem="iCX-uB-XAm" firstAttribute="top" secondItem="TcC-9M-AnO" secondAttribute="bottom" constant="5" id="7vu-Hm-Cbs"/>
                             <constraint firstItem="fVS-9o-g1S" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9cR-3F-HFb">
                                 <variation key="heightClass=compact" constant="10"/>
                             </constraint>
@@ -213,20 +230,27 @@
                             </constraint>
                             <constraint firstItem="iCX-uB-XAm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="JV4-EA-9wD"/>
                             <constraint firstItem="kP3-rS-Q3O" firstAttribute="top" secondItem="iCX-uB-XAm" secondAttribute="bottom" constant="20" id="LKB-ta-dlW"/>
+                            <constraint firstItem="kP3-rS-Q3O" firstAttribute="leading" secondItem="TcC-9M-AnO" secondAttribute="trailing" constant="8" id="Mnb-1o-DFM"/>
+                            <constraint firstItem="TcC-9M-AnO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="O6H-Er-bmx">
+                                <variation key="heightClass=compact" constant="-30"/>
+                            </constraint>
                             <constraint firstItem="iCX-uB-XAm" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="O6O-y2-TVE">
                                 <variation key="heightClass=compact" constant="10"/>
                             </constraint>
                             <constraint firstItem="iCX-uB-XAm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OGi-jS-jeo"/>
                             <constraint firstItem="fVS-9o-g1S" firstAttribute="leading" secondItem="kP3-rS-Q3O" secondAttribute="trailing" constant="10" id="Pcl-n2-GVC"/>
-                            <constraint firstItem="kP3-rS-Q3O" firstAttribute="leading" secondItem="iCX-uB-XAm" secondAttribute="trailing" constant="50" id="QnL-eL-ocn"/>
+                            <constraint firstItem="kP3-rS-Q3O" firstAttribute="leading" secondItem="iCX-uB-XAm" secondAttribute="trailing" constant="50" id="QnL-eL-ocn">
+                                <variation key="heightClass=compact" constant="8"/>
+                            </constraint>
                             <constraint firstItem="fVS-9o-g1S" firstAttribute="height" secondItem="kP3-rS-Q3O" secondAttribute="height" id="R5K-uO-yZv"/>
                             <constraint firstItem="kP3-rS-Q3O" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.75" id="SeR-Ts-aIx"/>
-                            <constraint firstItem="Fxx-3j-TvN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="VaR-BX-FFA"/>
                             <constraint firstItem="fVS-9o-g1S" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="XFS-9J-DR5"/>
-                            <constraint firstItem="Fxx-3j-TvN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YEs-9m-RrS"/>
                             <constraint firstItem="fVS-9o-g1S" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YXv-gr-A13"/>
                             <constraint firstItem="iCX-uB-XAm" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Yfk-1h-iix"/>
                             <constraint firstItem="kP3-rS-Q3O" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="ZFc-Mw-3QO"/>
+                            <constraint firstItem="86N-Ts-wSD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="ciH-De-ATl">
+                                <variation key="heightClass=compact" constant="4"/>
+                            </constraint>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fVS-9o-g1S" secondAttribute="trailing" constant="130" id="ciK-Xb-9qF">
                                 <variation key="heightClass=compact" constant="15"/>
                             </constraint>
@@ -234,8 +258,12 @@
                             <constraint firstItem="fVS-9o-g1S" firstAttribute="leading" secondItem="kP3-rS-Q3O" secondAttribute="trailing" constant="15" id="fXW-cA-gqh">
                                 <variation key="heightClass=compact" constant="20"/>
                             </constraint>
+                            <constraint firstItem="86N-Ts-wSD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="izU-cw-5m1"/>
+                            <constraint firstItem="86N-Ts-wSD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jew-Qm-Ic9"/>
                             <constraint firstItem="iCX-uB-XAm" firstAttribute="height" secondItem="kP3-rS-Q3O" secondAttribute="height" id="jvx-g0-GO5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="iCX-uB-XAm" secondAttribute="bottom" constant="8" id="lL6-th-hUh"/>
+                            <constraint firstItem="TcC-9M-AnO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="oXS-Rf-FAw"/>
+                            <constraint firstItem="TcC-9M-AnO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="obT-QM-7W9"/>
                             <constraint firstItem="iCX-uB-XAm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="ti2-eY-eFz"/>
                             <constraint firstItem="iCX-uB-XAm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="vOr-ay-9LW"/>
                             <constraint firstItem="kP3-rS-Q3O" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="w0K-qW-jLq">
@@ -250,12 +278,15 @@
                                 <exclude reference="F7v-K9-Lib"/>
                                 <exclude reference="ciK-Xb-9qF"/>
                                 <exclude reference="lL6-th-hUh"/>
+                                <exclude reference="O6H-Er-bmx"/>
+                                <exclude reference="obT-QM-7W9"/>
                                 <exclude reference="JV4-EA-9wD"/>
                                 <exclude reference="O6O-y2-TVE"/>
                                 <exclude reference="Yfk-1h-iix"/>
                                 <exclude reference="jvx-g0-GO5"/>
                                 <exclude reference="ti2-eY-eFz"/>
                                 <exclude reference="vOr-ay-9LW"/>
+                                <exclude reference="Mnb-1o-DFM"/>
                                 <exclude reference="QnL-eL-ocn"/>
                                 <exclude reference="SeR-Ts-aIx"/>
                                 <exclude reference="wsZ-fO-Jm5"/>
@@ -272,11 +303,17 @@
                             <mask key="constraints">
                                 <exclude reference="02d-2K-O2X"/>
                                 <exclude reference="3AN-Mz-ykq"/>
+                                <exclude reference="6U1-sW-dk4"/>
                                 <exclude reference="CTf-GP-7Od"/>
                                 <include reference="F7v-K9-Lib"/>
                                 <exclude reference="ciK-Xb-9qF"/>
                                 <exclude reference="lL6-th-hUh"/>
+                                <exclude reference="1UL-Mb-jKP"/>
+                                <include reference="O6H-Er-bmx"/>
+                                <exclude reference="oXS-Rf-FAw"/>
+                                <include reference="obT-QM-7W9"/>
                                 <exclude reference="2U7-ra-32y"/>
+                                <exclude reference="7vu-Hm-Cbs"/>
                                 <exclude reference="JV4-EA-9wD"/>
                                 <include reference="O6O-y2-TVE"/>
                                 <exclude reference="OGi-jS-jeo"/>
@@ -285,6 +322,7 @@
                                 <exclude reference="ti2-eY-eFz"/>
                                 <include reference="vOr-ay-9LW"/>
                                 <exclude reference="LKB-ta-dlW"/>
+                                <include reference="Mnb-1o-DFM"/>
                                 <include reference="QnL-eL-ocn"/>
                                 <exclude reference="SeR-Ts-aIx"/>
                                 <exclude reference="ZFc-Mw-3QO"/>
@@ -304,6 +342,7 @@
                     <connections>
                         <outlet property="instructionLabel" destination="iCX-uB-XAm" id="Og8-Mh-DBg"/>
                         <outlet property="mainView" destination="kP3-rS-Q3O" id="gCS-ri-42Y"/>
+                        <outlet property="rafterLabel" destination="TcC-9M-AnO" id="h5C-Kh-AOe"/>
                         <outlet property="swipeGestureRecognizer" destination="K4b-ks-KZb" id="kAa-6X-VKL"/>
                         <outletCollection property="buttonDisposition" destination="UaI-gd-D9j" collectionClass="NSMutableArray" id="HdE-D9-BQ8"/>
                         <outletCollection property="buttonDisposition" destination="9fw-Jn-ihd" collectionClass="NSMutableArray" id="txb-sQ-ShS"/>
@@ -321,11 +360,10 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="134.78260869565219" y="112.5"/>
+            <point key="canvasLocation" x="134.59821428571428" y="111.59420289855073"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Instagrid" width="41.333332061767578" height="13"/>
         <image name="Layout 1" width="26.666666030883789" height="26.666666030883789"/>
         <image name="Layout 2" width="26.666666030883789" height="26.666666030883789"/>
         <image name="Layout 3" width="26.666666030883789" height="26.666666030883789"/>
