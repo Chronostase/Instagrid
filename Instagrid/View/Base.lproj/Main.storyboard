@@ -53,6 +53,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="94" height="94.666666666666671"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" backgroundImage="Layout 1"/>
+                                        <state key="selected" image="Selected"/>
                                         <connections>
                                             <action selector="firstViewDisposition:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hh4-0l-R7C"/>
                                         </connections>
@@ -60,6 +61,7 @@
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fw-Jn-ihd">
                                         <rect key="frame" x="102" y="0.0" width="94" height="94.666666666666671"/>
                                         <state key="normal" backgroundImage="Layout 2"/>
+                                        <state key="selected" image="Selected"/>
                                         <connections>
                                             <action selector="secondViewDisposition:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cL9-Vs-xae"/>
                                         </connections>
@@ -118,6 +120,7 @@
                                                 <rect key="frame" x="157.66666666666663" y="0.0" width="140.33333333333337" height="139.33333333333334"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="Plus"/>
+                                                <state key="selected" image="Selected"/>
                                                 <connections>
                                                     <action selector="didTapImagesButtons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4de-fG-sBz"/>
                                                 </connections>
@@ -309,16 +312,16 @@
                                 <exclude reference="tTV-JH-vWv"/>
                                 <exclude reference="ti2-eY-eFz"/>
                                 <exclude reference="vOr-ay-9LW"/>
-                                <exclude reference="Jiz-Z3-kK3"/>
-                                <exclude reference="MIJ-zX-kNl"/>
-                                <exclude reference="QnL-eL-ocn"/>
-                                <exclude reference="SeR-Ts-aIx"/>
-                                <exclude reference="wsZ-fO-Jm5"/>
                                 <exclude reference="0n7-Ac-fv5"/>
                                 <exclude reference="1p4-iO-cmc"/>
                                 <exclude reference="M3x-R0-xF5"/>
                                 <exclude reference="NtV-cd-PTm"/>
                                 <exclude reference="O5z-Kb-YJq"/>
+                                <exclude reference="Jiz-Z3-kK3"/>
+                                <exclude reference="MIJ-zX-kNl"/>
+                                <exclude reference="QnL-eL-ocn"/>
+                                <exclude reference="SeR-Ts-aIx"/>
+                                <exclude reference="wsZ-fO-Jm5"/>
                                 <exclude reference="2J9-4C-uq1"/>
                                 <exclude reference="4Pj-jD-UcH"/>
                                 <exclude reference="9cR-3F-HFb"/>
@@ -346,13 +349,6 @@
                                 <include reference="tTV-JH-vWv"/>
                                 <exclude reference="ti2-eY-eFz"/>
                                 <include reference="vOr-ay-9LW"/>
-                                <include reference="Jiz-Z3-kK3"/>
-                                <exclude reference="LKB-ta-dlW"/>
-                                <exclude reference="MIJ-zX-kNl"/>
-                                <include reference="QnL-eL-ocn"/>
-                                <exclude reference="SeR-Ts-aIx"/>
-                                <exclude reference="ZFc-Mw-3QO"/>
-                                <include reference="wsZ-fO-Jm5"/>
                                 <include reference="0n7-Ac-fv5"/>
                                 <include reference="1p4-iO-cmc"/>
                                 <exclude reference="2sI-9E-SSO"/>
@@ -360,6 +356,13 @@
                                 <exclude reference="NtV-cd-PTm"/>
                                 <exclude reference="O5z-Kb-YJq"/>
                                 <exclude reference="evg-o4-6SW"/>
+                                <include reference="Jiz-Z3-kK3"/>
+                                <exclude reference="LKB-ta-dlW"/>
+                                <exclude reference="MIJ-zX-kNl"/>
+                                <include reference="QnL-eL-ocn"/>
+                                <exclude reference="SeR-Ts-aIx"/>
+                                <exclude reference="ZFc-Mw-3QO"/>
+                                <include reference="wsZ-fO-Jm5"/>
                                 <exclude reference="2J9-4C-uq1"/>
                                 <exclude reference="4Pj-jD-UcH"/>
                                 <include reference="9cR-3F-HFb"/>

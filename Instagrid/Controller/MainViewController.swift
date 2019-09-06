@@ -87,9 +87,9 @@ class MainViewController: UIViewController {
     
     private func resetSelectedDisposition(_ sender: UIButton) {
         for button in buttonDisposition {
-            button.setImage(nil, for: .normal)
+            button.isSelected = false
         }
-        buttonDisposition[sender.tag].setImage(#imageLiteral(resourceName: "Selected.png"), for: .normal)
+        buttonDisposition[sender.tag].isSelected = true
     }
     
     private func setupImageAspect() {
@@ -99,7 +99,7 @@ class MainViewController: UIViewController {
     }
     
     private func setDefaultSelectedDisposition() {
-        buttonDisposition[2].setImage(#imageLiteral(resourceName: "Selected.png"), for: .normal)
+        buttonDisposition[2].isSelected = true
     }
     
     //MARK: - Image Disposition
