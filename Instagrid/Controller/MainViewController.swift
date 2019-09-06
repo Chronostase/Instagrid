@@ -46,7 +46,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var instructionLabel: UILabel!
-    @IBOutlet weak var rafterLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet var imagesButtons: [UIButton]!
     @IBOutlet var buttonDisposition: [UIButton]!
     @IBOutlet var swipeGestureRecognizer: UISwipeGestureRecognizer!
@@ -65,9 +65,9 @@ class MainViewController: UIViewController {
     
     @objc private func checkDeviceOrientation() {
         if UIDevice.current.orientation == UIDeviceOrientation.portrait {
-            setSwipe(.up, label: "Swipe up to share ", swipeDirection: "^")
+            setSwipe(.up, label: "Swipe up to share ", image: "Arrow Up")
         } else {
-            setSwipe(.left, label: "Swipe left to share", swipeDirection: "<")
+            setSwipe(.left, label: "Swipe left to share", image: "Arrow Left")
         }
     }
     
@@ -86,10 +86,10 @@ class MainViewController: UIViewController {
         buttonDisposition[sender.tag].setImage(#imageLiteral(resourceName: "Selected.png"), for: .normal)
     }
     
-    private func setSwipe(_ direction: UISwipeGestureRecognizer.Direction, label: String, swipeDirection: String) {
+    private func setSwipe(_ direction: UISwipeGestureRecognizer.Direction, label: String, image: String) {
         swipeGestureRecognizer.direction = direction
         instructionLabel.text = label
-        rafterLabel.text = swipeDirection
+        imageView.image = UIImage(named: image)
     }
     
     private func setupImageAspect() {
