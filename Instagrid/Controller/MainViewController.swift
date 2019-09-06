@@ -56,17 +56,14 @@ class MainViewController: UIViewController {
     private func launchingSetup() {
         setDefaultSelectedDisposition()
         setupImageAspect()
-        setSwipeGesture()
+        setNotificationToCheckDeviceOrientation()
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: nil) { _ in
-            self.checkDeviceOrientation()
-        }
+    private func setNotificationToCheckDeviceOrientation() {
+        NotificationCenter.default.addObserver(self, selector: #selector(checkDeviceOrientation), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
-    private func checkDeviceOrientation() {
+    @objc private func checkDeviceOrientation() {
         if UIDevice.current.orientation == UIDeviceOrientation.portrait {
             setSwipe(.up, label: "Swipe up to share ", swipeDirection: "^")
         } else {
@@ -87,15 +84,6 @@ class MainViewController: UIViewController {
             button.setImage(nil, for: .normal)
         }
         buttonDisposition[sender.tag].setImage(#imageLiteral(resourceName: "Selected.png"), for: .normal)
-    }
-    
-    private func setSwipeGesture() {
-        let orientation = UIApplication.shared.statusBarOrientation
-        if orientation == .portrait {
-            setSwipe(.up, label: "Swipe up to share ", swipeDirection: "^")
-        } else {
-            setSwipe(.left, label: "Swipe left to share", swipeDirection: "<")
-        }
     }
     
     private func setSwipe(_ direction: UISwipeGestureRecognizer.Direction, label: String, swipeDirection: String) {
