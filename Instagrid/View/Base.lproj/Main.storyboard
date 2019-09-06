@@ -67,6 +67,7 @@
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yW8-or-TqR">
                                         <rect key="frame" x="204" y="0.0" width="94" height="94.666666666666671"/>
                                         <state key="normal" backgroundImage="Layout 3"/>
+                                        <state key="selected" image="Selected"/>
                                         <connections>
                                             <action selector="thirdViewDisposition:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZRP-3B-cpH"/>
                                         </connections>
@@ -401,5 +402,6 @@
         <image name="Layout 2" width="26.666666030883789" height="26.666666030883789"/>
         <image name="Layout 3" width="26.666666030883789" height="26.666666030883789"/>
         <image name="Plus" width="48" height="48"/>
+        <image name="Selected" width="26.666666030883789" height="26.666666030883789"/>
     </resources>
 </document>

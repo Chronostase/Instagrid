@@ -71,6 +71,12 @@ class MainViewController: UIViewController {
         }
     }
     
+    private func setSwipe(_ direction: UISwipeGestureRecognizer.Direction, label: String, image: String) {
+        swipeGestureRecognizer.direction = direction
+        instructionLabel.text = label
+        imageView.image = UIImage(named: image)
+    }
+    
     private func displayAlert(title: String) {
         let alert = UIAlertController(title: title, message: "Please try again.", preferredStyle: .alert)
         
@@ -86,12 +92,6 @@ class MainViewController: UIViewController {
         buttonDisposition[sender.tag].setImage(#imageLiteral(resourceName: "Selected.png"), for: .normal)
     }
     
-    private func setSwipe(_ direction: UISwipeGestureRecognizer.Direction, label: String, image: String) {
-        swipeGestureRecognizer.direction = direction
-        instructionLabel.text = label
-        imageView.image = UIImage(named: image)
-    }
-    
     private func setupImageAspect() {
         for imageButton in imagesButtons {
             imageButton.imageView?.contentMode = .scaleAspectFill
@@ -101,6 +101,7 @@ class MainViewController: UIViewController {
     private func setDefaultSelectedDisposition() {
         buttonDisposition[2].setImage(#imageLiteral(resourceName: "Selected.png"), for: .normal)
     }
+    
     //MARK: - Image Disposition
     
     private func doFirstDisposition() {
